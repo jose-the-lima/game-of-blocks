@@ -25,6 +25,8 @@ function preencheTela() {
             makeBlock(x, y, 50, cores[numCor][0]);
             cores[numCor][1]++;
 
+            locaisSorteadosComCor.push([x, y, cores[numCor][0]]);
+
             if(cores[numCor][1] == 24) {
                 cores.splice(numCor, 1);
             }
