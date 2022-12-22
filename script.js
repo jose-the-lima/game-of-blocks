@@ -37,9 +37,7 @@ function preencheTela() {
 
 // function identificadora de clique e cor
 
-function identificaClique(event) {
-    const x = event.pageX;
-    const y = event.pageY;
+function identificaClique(x, y) {
     let cliqueIdentificado;
 
     locaisSorteadosComCor.filter((value) => {
@@ -50,3 +48,33 @@ function identificaClique(event) {
 
     return cliqueIdentificado;
 }
+
+// função que incrementa o clique e verifica se os dois são iguais.
+
+let numCliques = 0;
+
+let corDoClique1;
+let corDoClique2;
+
+function incrementaEVerifica(event) {
+    const x = event.pageX;
+    const y = event.pageY;
+
+    const cor = identificaClique(x, y);
+
+    numCliques++;
+    if(numCliques == 1) {
+        corDoClique1 = cor;
+    }
+
+    if(numCliques == 2) {
+        corDoClique2 = cor;
+
+        if(corDoClique1[2] == corDoClique2[2]) {
+            alert("São identicas");
+        }
+        numCliques = 0;
+    }
+}
+canvas.addEventListener("mousedown", incrementaEVerifica);
+preencheTela();
