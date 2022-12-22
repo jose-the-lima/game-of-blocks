@@ -33,3 +33,20 @@ function preencheTela() {
         }
     }
 }
+
+
+// function identificadora de clique e cor
+
+function identificaClique(event) {
+    const x = event.pageX;
+    const y = event.pageY;
+    let cliqueIdentificado;
+
+    locaisSorteadosComCor.filter((value) => {
+        if((x >= value[0] && x <= value[0] + 50) && (y >= value[1] && y <= value[1] + 50)) {
+            cliqueIdentificado = value;
+        }
+    });
+
+    return cliqueIdentificado;
+}
