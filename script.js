@@ -78,7 +78,12 @@ function incrementaEVerifica(event) {
                 locaisSorteadosComCor[index1][2] = "white";
                 locaisSorteadosComCor[index2][2] = "white";
     
+                let gameEnd = verificaSeOJogoAcabou(locaisSorteadosComCor);
                 redesenhaTela(locaisSorteadosComCor);
+
+                if(gameEnd) {
+                    alert("Jogo acabou");
+                }
             }
         }else {
             console.log(corDoClique1[0], corDoClique1[1], corDoClique1[2]);
@@ -103,6 +108,13 @@ function redesenhaTela(array) {
         let coordenadaDaVez = array[i];
         makeBlock(coordenadaDaVez[0], coordenadaDaVez[1], 50, coordenadaDaVez[2]);
     }
+}
+
+// Função que verificase o jogo acabou
+
+function verificaSeOJogoAcabou(array) {
+    let resposta = array.every(function(value) {return value[2] == "white"});
+    return resposta;
 }
 
 canvas.addEventListener("mousedown", incrementaEVerifica);
