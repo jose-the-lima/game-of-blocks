@@ -1,5 +1,7 @@
 const canvas = document.querySelector(".canvas");
 const pincel = canvas.getContext("2d");
+const resetButton = document.querySelector(".button");
+
 
 let cores = [["red", 0], ["blue", 0], ["green", 0], ["purple", 0]];
 let ultimoNumero;
@@ -82,7 +84,7 @@ function incrementaEVerifica(event) {
                 redesenhaTela(locaisSorteadosComCor);
 
                 if(gameEnd) {
-                    alert("Jogo acabou");
+                    resetButton.classList.remove("invisivel");
                 }
             }
         }else {
@@ -117,5 +119,14 @@ function verificaSeOJogoAcabou(array) {
     return resposta;
 }
 
+function reset() {
+    cores = [["red", 0], ["blue", 0], ["green", 0], ["purple", 0]];
+}
+
 canvas.addEventListener("mousedown", incrementaEVerifica);
+resetButton.addEventListener("click", function() {
+    reset();
+    preencheTela();
+    resetButton.classList.add("invisivel");
+});
 preencheTela();
