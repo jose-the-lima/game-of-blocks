@@ -70,15 +70,21 @@ function incrementaEVerifica(event) {
     if(numCliques == 2) {
         corDoClique2 = cor;
 
-        if(corDoClique1[2] == corDoClique2[2]) {
-            const index1 = locaisSorteadosComCor.indexOf(corDoClique1);
-            const index2 = locaisSorteadosComCor.indexOf(corDoClique2);
-
-            locaisSorteadosComCor[index1][2] = "white";
-            locaisSorteadosComCor[index2][2] = "white";
-
-            redesenhaTela(locaisSorteadosComCor);
+        if((corDoClique1[0] != corDoClique2[0]) || (corDoClique1[1] != corDoClique2[1])) {
+            if(corDoClique1[2] == corDoClique2[2]) {
+                const index1 = locaisSorteadosComCor.indexOf(corDoClique1);
+                const index2 = locaisSorteadosComCor.indexOf(corDoClique2);
+    
+                locaisSorteadosComCor[index1][2] = "white";
+                locaisSorteadosComCor[index2][2] = "white";
+    
+                redesenhaTela(locaisSorteadosComCor);
+            }
+        }else {
+            console.log(corDoClique1[0], corDoClique1[1], corDoClique1[2]);
+            console.log(corDoClique2[0], corDoClique2[1], corDoClique2[2]);
         }
+        
         numCliques = 0;
     }
 }
