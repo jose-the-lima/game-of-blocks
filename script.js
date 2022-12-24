@@ -85,6 +85,7 @@ function incrementaEVerifica(event) {
 
                 if(gameEnd) {
                     resetButton.classList.remove("invisivel");
+                    preencheTelaVitoria();
                 }
             }
         }else {
@@ -95,9 +96,6 @@ function incrementaEVerifica(event) {
         numCliques = 0;
     }
 }
-
-
-// Função para limpar a tela, e função para redesenhar a tela a partir de coordenadas
 
 function clear() {
     pincel.clearRect(0, 0, 600, 400);
@@ -112,8 +110,6 @@ function redesenhaTela(array) {
     }
 }
 
-// Função que verificase o jogo acabou
-
 function verificaSeOJogoAcabou(array) {
     let resposta = array.every(function(value) {return value[2] == "white"});
     return resposta;
@@ -121,6 +117,19 @@ function verificaSeOJogoAcabou(array) {
 
 function reset() {
     cores = [["red", 0], ["blue", 0], ["green", 0], ["purple", 0]];
+}
+
+function preencheTelaVitoria() {
+    clear();
+    pincel.fillStyle = "green"; // 300 largura, 150 altura
+    pincel.fillRect(150, 100, 300, 150);
+
+    pincel.fillStyle = "white";
+    pincel.font = "40px arial";
+    pincel.fillText("Você venceu!", 180, 190);
+
+    pincel.strokeStyle = "black";
+    pincel.strokeRect(150, 100, 300, 150);
 }
 
 canvas.addEventListener("mousedown", incrementaEVerifica);
