@@ -6,6 +6,7 @@ const resetButton = document.querySelector(".button");
 let cores = [["red", 0], ["blue", 0], ["green", 0], ["purple", 0]];
 let ultimoNumero;
 let locaisSorteadosComCor = [];
+let gameEnd = false;
 
 function makeBlock(eixoX, eixoY, tamanho, cor) {
     pincel.fillStyle = cor;
@@ -36,9 +37,6 @@ function preencheTela() {
     }
 }
 
-
-// function identificadora de clique e cor
-
 function identificaClique(x, y) {
     let cliqueIdentificado;
 
@@ -50,8 +48,6 @@ function identificaClique(x, y) {
 
     return cliqueIdentificado;
 }
-
-// função que incrementa o clique e verifica se os dois são iguais.
 
 let numCliques = 0;
 
@@ -65,11 +61,13 @@ function incrementaEVerifica(event) {
     const cor = identificaClique(x, y);
 
     numCliques++;
-    if(numCliques == 1) {
+    if(numCliques == 1 && !gameEnd) {
         corDoClique1 = cor;
+        pincel.strokeStyle = "yellow";
+        pincel.strokeRect(cor[0], cor[1], 50, 50);
     }
 
-    if(numCliques == 2) {
+    if(numCliques == 2 && !gameEnd) {
         corDoClique2 = cor;
 
         if((corDoClique1[0] != corDoClique2[0]) || (corDoClique1[1] != corDoClique2[1])) {
@@ -79,21 +77,23 @@ function incrementaEVerifica(event) {
     
                 locaisSorteadosComCor[index1][2] = "white";
                 locaisSorteadosComCor[index2][2] = "white";
-    
-                let gameEnd = verificaSeOJogoAcabou(locaisSorteadosComCor);
-                redesenhaTela(locaisSorteadosComCor);
+
+                gameEnd = verificaSeOJogoAcabou(locaisSorteadosComCor);
 
                 if(gameEnd) {
                     resetButton.classList.remove("invisivel");
                     preencheTelaVitoria();
                 }
+            }else {
+                redesenhaTela(locaisSorteadosComCor);
             }
-        }else {
-            console.log(corDoClique1[0], corDoClique1[1], corDoClique1[2]);
-            console.log(corDoClique2[0], corDoClique2[1], corDoClique2[2]);
+        }
+        numCliques = 0;
+
+        if(!gameEnd) {
+            redesenhaTela(locaisSorteadosComCor);
         }
         
-        numCliques = 0;
     }
 }
 
@@ -117,6 +117,8 @@ function verificaSeOJogoAcabou(array) {
 
 function reset() {
     cores = [["red", 0], ["blue", 0], ["green", 0], ["purple", 0]];
+    gameEnd = false;
+    numCliques = 0;
 }
 
 function preencheTelaVitoria() {
