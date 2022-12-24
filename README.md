@@ -1,8 +1,18 @@
 # Game-of-blocks
 
 ## imagens do jogo
+<div style="display:flex">
+  <img src="https://user-images.githubusercontent.com/120755345/209435953-3f40b835-bf3b-4361-9dc0-adb40568050a.png" width="30%"/>
+
+  <img src="https://user-images.githubusercontent.com/120755345/209435968-82f1891f-97ec-49be-902a-7bb95b345146.png" width="30%"/>
+  
+  <img src="https://user-images.githubusercontent.com/120755345/209436034-0e590018-b530-409f-a560-f2bff868d54b.png" width="30%"/>
+</div>
+
 
 ## Jogo
+
+  <img src="https://user-images.githubusercontent.com/120755345/209436400-74396280-4880-4a24-a7ec-3b248276c615.gif" width="50%"/>
 
 ## Objetivo
 
